@@ -45,3 +45,18 @@ export function getYear(date: string) {
   const newDate = new Date(date);
   return newDate.getFullYear();
 }
+
+/**
+ * Returns image caption from image url
+ * @param {string} image
+ * @return {string}
+ */
+export function getImageCaption(image: string): string {
+  const urlObj = new URL(image);
+  const fileName = urlObj.pathname.split("/").pop() || "";
+
+  return decodeURIComponent(fileName)
+    .replace(/\.\w+$/, "")
+    .replace(/\s*\([^)]*\)/g, "")
+    .replace(/-/g, " ");
+}

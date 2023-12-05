@@ -11,11 +11,9 @@ export const Occupation: ComponentType<Props> = ({ person }) => {
   const occupations = occupation.split(",");
   return (
     <>
-      <tr>
-        <th scope="row" className="infobox-label">
-          Occupation
-        </th>
-        <td className="infobox-data">
+      <tr className="hover">
+        <th scope="row">Occupation</th>
+        <td>
           <div className="hlist">
             <ul>
               {occupations.map((job) => (

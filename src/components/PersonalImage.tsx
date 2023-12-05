@@ -1,6 +1,7 @@
 import { Person } from "@/pages/[id]";
 import { ComponentType } from "react";
 import Image from "next/image";
+import { getImageCaption } from "@/utils/common";
 
 type Props = {
   person: Person;
@@ -17,11 +18,10 @@ export const PersonalImage: ComponentType<Props> = ({ person }) => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              paddingTop: "0.5em",
             }}
           >
             <Image
-              alt={person.nativeName.value}
+              alt={"Image"}
               src={person.image.value}
               width={220}
               height={275}
@@ -30,10 +30,9 @@ export const PersonalImage: ComponentType<Props> = ({ person }) => {
               style={{
                 lineHeight: "normal",
                 paddingTop: "0.2em",
-                paddingBottom: "0.5em",
               }}
             >
-              Official portrait, 2012
+              {getImageCaption(person.image.value)}
             </div>
           </div>
         </td>

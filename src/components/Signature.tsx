@@ -9,9 +9,9 @@ type Props = {
 export const Signature: ComponentType<Props> = ({ person }) => {
   return (
     <>
-      <tr>
-        <th colSpan={2}>Signature</th>
-      </tr>
+      <th colSpan={2} style={{ textAlign: "center", paddingBottom: 0 }}>
+        Signature
+      </th>
       <tr>
         <td colSpan={2}>
           <div
@@ -20,15 +20,23 @@ export const Signature: ComponentType<Props> = ({ person }) => {
               flexDirection: "column",
               alignItems: "center",
               justifyContent: "center",
-              paddingTop: "0.5em",
             }}
           >
-            <Image
-              alt={person.nativeName.value}
-              src={person.signature.value}
-              width={220}
-              height={275}
-            />
+            <div
+              className="p-4"
+              style={{
+                backgroundColor: "white",
+                borderRadius: "5px",
+                boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+              }}
+            >
+              <Image
+                alt={"Signature"}
+                src={person.signature.value}
+                width={220}
+                height={275}
+              />
+            </div>
           </div>
         </td>
       </tr>

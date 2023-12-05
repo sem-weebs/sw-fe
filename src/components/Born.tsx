@@ -7,23 +7,30 @@ type Props = {
 };
 
 export const Born: ComponentType<Props> = ({ person }) => {
-  const birthDateString = getBirthDateString(person.birthDate.value);
-  const age = getAge(person.birthDate.value);
+  let birthDateString: string | null = null;
+  let age: number | null = null;
+
+  if (person?.birthDate?.value) {
+    birthDateString = getBirthDateString(person.birthDate.value);
+    age = getAge(person.birthDate.value);
+  }
+
   return (
     <>
-      <tr>
-        <th scope="row" className="infobox-label">
-          Born
-        </th>
-        <td className="infobox-data">
-          <div style={{ display: "inline" }} className="nickname">
-            {person.birthName.value}
-          </div>
-          <br />
-          {birthDateString}
-          <span className="noprint ForceAgeToShow"> (age {age})</span>
-          <br />
-          Honolulu , Hawaii, U.S.
+      <tr className="hover">
+        <th scope="row">Born</th>
+        <td>
+          {person?.birthName?.value && (
+            <div style={{ display: "inline" }}>
+              {person?.birthName?.value}
+              <br></br>
+            </div>
+          )}
+          {birthDateString && birthDateString}
+          {age && <span> (age {age})</span>}
+          {birthDateString || age ? <br /> : null}
+          {person?.birthPlace?.value && person.birthPlace.value},{" "}
+          {person?.citizenship?.value && person.citizenship.value}
         </td>
       </tr>
     </>
