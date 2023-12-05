@@ -1,11 +1,23 @@
 import { Person } from "@/pages/[id]";
 import { ComponentType } from "react";
+import {
+  getAge,
+  getBirthDateString,
+  getYear,
+  toTitleCase,
+} from "@/utils/common";
 
 type Props = {
   person: Person;
 };
 
 export const PersonalDetails: ComponentType<Props> = ({ person }) => {
+  const birthDateString = getBirthDateString(person.birthDate.value);
+  const age = getAge(person.birthDate.value);
+
+  const occupation = person.occupations.value;
+  const occupations = occupation.split(",");
+
   return (
     <>
       <tr>
@@ -19,15 +31,15 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
         </th>
         <td className="infobox-data">
           <div style={{ display: "inline" }} className="nickname">
-            Barack Hussein Obama II
+            {person.birthName.value}
           </div>
           <br />
           <span style={{ display: "none" }}>
             {" "}
             (<span className="bday">1961-08-04</span>){" "}
           </span>
-          August 4, 1961
-          <span className="noprint ForceAgeToShow"> (age&nbsp;62)</span>
+          {birthDateString}
+          <span className="noprint ForceAgeToShow"> (age&nbsp;{age})</span>
           <br />
           <a href="/wiki/Honolulu" title="Honolulu">
             Honolulu
@@ -37,15 +49,28 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
       </tr>
       <tr>
         <th scope="row" className="infobox-label">
-          Political party
+          Occupation
         </th>
         <td className="infobox-data">
-          <a
-            href="/wiki/Democratic_Party_(United_States)"
-            title="Democratic Party (United States)"
-          >
-            Democratic
-          </a>
+          <link
+            rel="mw-deduplicated-inline-style"
+            href="mw-data:TemplateStyles:r1129693374"
+          />
+          <div className="hlist">
+            <ul>
+              {occupations.map((job) => (
+                <li key={job}>{toTitleCase(job)}</li>
+              ))}
+            </ul>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" className="infobox-label">
+          Years active
+        </th>
+        <td className="infobox-data">
+          {getYear(person.workDate.value)} - present
         </td>
       </tr>
       <tr>
@@ -207,24 +232,6 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
                 </a>
                 )
               </li>
-            </ul>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" className="infobox-label">
-          Occupation
-        </th>
-        <td className="infobox-data">
-          <link
-            rel="mw-deduplicated-inline-style"
-            href="mw-data:TemplateStyles:r1129693374"
-          />
-          <div className="hlist">
-            <ul>
-              <li>Politician</li>
-              <li>lawyer</li>
-              <li>author</li>
             </ul>
           </div>
         </td>

@@ -20,8 +20,8 @@ export const PersonalImage: ComponentType<Props> = ({ person }) => {
             }}
           >
             <img
-              alt="Obama standing in the Oval Office with his arms folded and smiling"
-              src="//upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/220px-President_Barack_Obama.jpg"
+              alt={person.nativeName.value}
+              src={person.image.value}
               width={220}
               height={275}
             />
