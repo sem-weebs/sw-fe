@@ -1,10 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
+import Link from "next/link";
+
+type SearchResults = {
+  name: string;
+  username: string;
+};
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState<SearchResults[]>([]);
 
   const toggleCategories = () => {
     setIsCollapsed(!isCollapsed);
@@ -133,12 +139,13 @@ const Index = () => {
             <div
               key={index}
               className="bg-gradient-to-br from-black to-gray-600 p-6 m-4 rounded-md shadow-lg mb-4 hover:shadow-xl transition duration-300 ease-in-out hover:cursor-pointer"
-              onClick={() => alert("Clicked on " + result.name)}
+              // onClick={() => alert("Clicked on " + result.name)}
             >
               <p className="text-2xl text-white font-bold mb-4">
                 Name: {result.name}
               </p>
               <p className="text-gray-300">Username: {result.username}</p>
+              <Link href={`/${result.username}`}>View Profile</Link>
             </div>
           ))
         ) : (
