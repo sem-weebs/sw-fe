@@ -1,10 +1,5 @@
 import { Person } from "@/pages/[id]";
 import { ComponentType } from "react";
-import { Signature } from "@/components/Signature";
-import { Born } from "@/components/Born";
-import { Occupation } from "@/components/Occupation";
-import { ActiveSince } from "@/components/ActiveSince";
-import { Gender } from "@/components/Gender";
 import { Item } from "@/components/Item";
 import { ItemDescription } from "@/components/ItemDescription";
 import { Categories } from "@/components/Categories";

@@ -1,6 +1,5 @@
 import { Person } from "@/pages/[id]";
 import { ComponentType } from "react";
-import { getYear } from "@/utils/common";
 
 type Props = {
   person: Person;

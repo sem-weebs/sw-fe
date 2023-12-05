@@ -1,13 +1,8 @@
 import { Person } from "@/pages/[id]";
 import { ComponentType } from "react";
-import { Signature } from "@/components/Signature";
-import { Born } from "@/components/Born";
-import { Occupation } from "@/components/Occupation";
-import { ActiveSince } from "@/components/ActiveSince";
 import { AudienceCountry } from "@/components/AudienceCountry";
 import { AuthenticEngagement } from "@/components/AuthenticEngagement";
 import { Country } from "@/components/Country";
-import { Engagement } from "next/dist/compiled/@next/font/dist/google";
 import { EngagementAvg } from "@/components/EngagementAvg";
 import { Followers } from "@/components/Followers";
 import { Instagram } from "@/components/Instagram";
