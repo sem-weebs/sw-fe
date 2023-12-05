@@ -1,6 +1,6 @@
 import { Person } from "@/pages/[id]";
 import { ComponentType } from "react";
-import { getAge, getBirthDateString, toTitleCase } from "@/utils/common";
+import { toTitleCase } from "@/utils/common";
 
 type Props = {
   person: Person;

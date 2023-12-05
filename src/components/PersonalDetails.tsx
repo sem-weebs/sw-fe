@@ -1,6 +1,6 @@
 import { Person } from "@/pages/[id]";
 import { ComponentType } from "react";
-import { getYear, toTitleCase } from "@/utils/common";
+import { getYear } from "@/utils/common";
 import { Signature } from "@/components/Signature";
 import { Born } from "@/components/Born";
 import { Occupation } from "@/components/Occupation";
