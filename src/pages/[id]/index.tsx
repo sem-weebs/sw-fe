@@ -48,7 +48,7 @@ const Detail = () => {
       <table>
         <tbody>
           <tr>
-            <th style={{ fontSize: "100%", alignItems: "center" }}>
+            <th colSpan={2} style={{ fontSize: "100%" }}>
               <div className="fn" style={{ fontSize: "125%" }}>
                 Barack Obama
               </div>
