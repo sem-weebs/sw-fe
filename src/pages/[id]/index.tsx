@@ -46,7 +46,11 @@ const Detail = () => {
   }, [id]);
 
   if (!person) {
-    return;
+    return (
+        <div>
+          <span className="loading loading-spinner text-primary"></span>
+        </div>
+    )
   }
 
   return (
