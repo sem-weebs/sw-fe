@@ -1,23 +1,15 @@
 import { Person } from "@/pages/[id]";
 import { ComponentType } from "react";
-import {
-  getAge,
-  getBirthDateString,
-  getYear,
-  toTitleCase,
-} from "@/utils/common";
+import { getYear, toTitleCase } from "@/utils/common";
+import { Signature } from "@/components/Signature";
+import { Born } from "@/components/Born";
+import { Occupation } from "@/components/Occupation";
 
 type Props = {
   person: Person;
 };
 
 export const PersonalDetails: ComponentType<Props> = ({ person }) => {
-  const birthDateString = getBirthDateString(person.birthDate.value);
-  const age = getAge(person.birthDate.value);
-
-  const occupation = person.occupations.value;
-  const occupations = occupation.split(",");
-
   return (
     <>
       <tr>
@@ -25,46 +17,8 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
           Personal details
         </th>
       </tr>
-      <tr>
-        <th scope="row" className="infobox-label">
-          Born
-        </th>
-        <td className="infobox-data">
-          <div style={{ display: "inline" }} className="nickname">
-            {person.birthName.value}
-          </div>
-          <br />
-          <span style={{ display: "none" }}>
-            {" "}
-            (<span className="bday">1961-08-04</span>){" "}
-          </span>
-          {birthDateString}
-          <span className="noprint ForceAgeToShow"> (age&nbsp;{age})</span>
-          <br />
-          <a href="/wiki/Honolulu" title="Honolulu">
-            Honolulu
-          </a>
-          , Hawaii, U.S.
-        </td>
-      </tr>
-      <tr>
-        <th scope="row" className="infobox-label">
-          Occupation
-        </th>
-        <td className="infobox-data">
-          <link
-            rel="mw-deduplicated-inline-style"
-            href="mw-data:TemplateStyles:r1129693374"
-          />
-          <div className="hlist">
-            <ul>
-              {occupations.map((job) => (
-                <li key={job}>{toTitleCase(job)}</li>
-              ))}
-            </ul>
-          </div>
-        </td>
-      </tr>
+      <Born person={person} />
+      <Occupation person={person} />
       <tr>
         <th scope="row" className="infobox-label">
           Years active
@@ -87,9 +41,7 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
           />
           <div className="marriage-display-ws">
             <div style={{ display: "inline-block", lineHeight: "normal" }}>
-              <a href="/wiki/Michelle_Obama" title="Michelle Obama">
-                Michelle Robinson
-              </a>
+              Michelle Robinson
             </div>{" "}
             <div style={{ display: "inline-block" }}>​</div>(
             <abbr title="married">m.</abbr>&nbsp;
@@ -121,24 +73,8 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
           />
           <div className="hlist">
             <ul>
-              <li>
-                <a
-                  href="/wiki/Malia_Obama"
-                  className="mw-redirect"
-                  title="Malia Obama"
-                >
-                  Malia
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/wiki/Sasha_Obama"
-                  className="mw-redirect"
-                  title="Sasha Obama"
-                >
-                  Sasha
-                </a>
-              </li>
+              <li>Malia</li>
+              <li>Sasha</li>
             </ul>
           </div>
         </td>
@@ -162,11 +98,7 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
                   Barack Obama Sr.
                 </a>
               </li>
-              <li>
-                <a href="/wiki/Ann_Dunham" title="Ann Dunham">
-                  Ann Dunham
-                </a>
-              </li>
+              <li>Ann Dunham</li>
             </ul>
           </div>
         </td>
@@ -175,15 +107,7 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
         <th scope="row" className="infobox-label">
           Relatives
         </th>
-        <td className="infobox-data">
-          <a
-            href="/wiki/Obama_family"
-            className="mw-redirect"
-            title="Obama family"
-          >
-            Obama family
-          </a>
-        </td>
+        <td className="infobox-data">Obama family</td>
       </tr>
       <tr>
         <th scope="row" className="infobox-label">
@@ -201,9 +125,7 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
       </tr>
       <tr>
         <th scope="row" className="infobox-label">
-          <a href="/wiki/Alma_mater" title="Alma mater">
-            Alma mater
-          </a>
+          Alma mater
         </th>
         <td className="infobox-data">
           <link
@@ -212,26 +134,8 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
           />
           <div className="plainlist">
             <ul>
-              <li>
-                <a href="/wiki/Columbia_University" title="Columbia University">
-                  Columbia University
-                </a>{" "}
-                (
-                <a href="/wiki/Bachelor_of_Arts" title="Bachelor of Arts">
-                  BA
-                </a>
-                )
-              </li>
-              <li>
-                <a href="/wiki/Harvard_Law_School" title="Harvard Law School">
-                  Harvard University
-                </a>{" "}
-                (
-                <a href="/wiki/Juris_Doctor" title="Juris Doctor">
-                  JD
-                </a>
-                )
-              </li>
+              <li>Columbia University ( BA )</li>
+              <li>Harvard University ( JD )</li>
             </ul>
           </div>
         </td>
@@ -240,14 +144,7 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
         <th scope="row" className="infobox-label">
           Awards
         </th>
-        <td className="infobox-data">
-          <a
-            href="/wiki/List_of_awards_and_honors_received_by_Barack_Obama"
-            title="List of awards and honors received by Barack Obama"
-          >
-            Full list
-          </a>
-        </td>
+        <td className="infobox-data">Full list</td>
       </tr>
       <tr>
         <th scope="row" className="infobox-label">
@@ -329,6 +226,7 @@ export const PersonalDetails: ComponentType<Props> = ({ person }) => {
           </div>
         </td>
       </tr>
+      <Signature person={person} />
     </>
   );
 };

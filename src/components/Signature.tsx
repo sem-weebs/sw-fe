@@ -6,9 +6,12 @@ type Props = {
   person: Person;
 };
 
-export const PersonalImage: ComponentType<Props> = ({ person }) => {
+export const Signature: ComponentType<Props> = ({ person }) => {
   return (
     <>
+      <tr>
+        <th colSpan={2}>Signature</th>
+      </tr>
       <tr>
         <td colSpan={2}>
           <div
@@ -22,19 +25,10 @@ export const PersonalImage: ComponentType<Props> = ({ person }) => {
           >
             <Image
               alt={person.nativeName.value}
-              src={person.image.value}
+              src={person.signature.value}
               width={220}
               height={275}
             />
-            <div
-              style={{
-                lineHeight: "normal",
-                paddingTop: "0.2em",
-                paddingBottom: "0.5em",
-              }}
-            >
-              Official portrait, 2012
-            </div>
           </div>
         </td>
       </tr>
