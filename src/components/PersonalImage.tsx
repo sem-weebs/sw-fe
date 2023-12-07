@@ -8,6 +8,8 @@ type Props = {
 };
 
 export const PersonalImage: ComponentType<Props> = ({ person }) => {
+    const imageUrl = person?.image?.value || "https://i.imgur.com/OFbQiB7.jpg";
+    const imageCaption = person?.image?.value ? getImageCaption(person.image.value) : "Caption not available";
   return (
     <>
       <tr>
@@ -22,7 +24,7 @@ export const PersonalImage: ComponentType<Props> = ({ person }) => {
           >
             <Image
               alt={"Image"}
-              src={person.image.value}
+              src={imageUrl}
               width={220}
               height={275}
             />
@@ -32,7 +34,7 @@ export const PersonalImage: ComponentType<Props> = ({ person }) => {
                 paddingTop: "0.2em",
               }}
             >
-              {getImageCaption(person.image.value)}
+              {imageCaption}
             </div>
           </div>
         </td>
