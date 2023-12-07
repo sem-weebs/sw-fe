@@ -8,7 +8,7 @@ type Props = {
 
 export const Citizenship: ComponentType<Props> = ({ person }) => {
   const citizenship = person.citizenship.value;
-  const citizenshipList = citizenship.split(",");
+  const citizenshipList = citizenship.split(";");
 
   return (
     <>

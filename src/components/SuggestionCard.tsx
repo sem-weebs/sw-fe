@@ -1,30 +1,13 @@
 import Link from "next/link";
 import React, { ComponentType } from "react";
-
-export type SearchResults = {
-  categories: {
-    value: string;
-  };
-  image?: {
-    value: string;
-  };
-  rank: {
-    value: string;
-  };
-  title?: {
-    value: string;
-  };
-  username: {
-    value: string;
-  };
-};
+import { SearchResults } from "@/pages";
 
 type Props = {
   key: number;
   result: SearchResults;
 };
 
-export const CelebrityCard: ComponentType<Props> = ({ key, result }) => {
+export const SuggestionCard: ComponentType<Props> = ({ key, result }) => {
   const imageSrc =
     result.image?.value ||
     "https://animesher.com/orig/1/135/1355/13559/animesher.com_yui-hirasawa-gif-k-on-1355944.gif";
@@ -46,9 +29,6 @@ export const CelebrityCard: ComponentType<Props> = ({ key, result }) => {
             <h2 className="card-title truncate flex-grow flex-shrink max-w-xs">
               {result.username.value}
             </h2>
-            <div className="badge badge-secondary ml-2 p-2 whitespace-nowrap">
-              Rank #{result.rank.value}
-            </div>
           </div>
           <p className="my-2 block font-sans text-base font-light leading-relaxed text-gray-700 dark:text-gray-300 antialiased">
             {result.title?.value || "No Title"}

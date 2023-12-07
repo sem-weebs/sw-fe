@@ -5,7 +5,7 @@ import { CategoryFilter } from "@/components/CategoryFilter";
 import { CelebrityCard } from "@/components/CelebrityCard";
 import { API_URL } from "@/utils/constant";
 
-type SearchResults = {
+export type SearchResults = {
   categories: {
     value: string;
   };
@@ -97,7 +97,7 @@ const Index = () => {
         ) : searchResults.length !== 0 ? (
           <div className="flex flex-wrap justify-center gap-4">
             {searchResults.map((result, index) => (
-              <CelebrityCard result={result} index={index} key={index} />
+              <CelebrityCard result={result} key={index} />
             ))}
           </div>
         ) : (

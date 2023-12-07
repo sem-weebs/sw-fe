@@ -8,7 +8,7 @@ type Props = {
 
 export const Occupation: ComponentType<Props> = ({ person }) => {
   const occupation = person.occupations.value;
-  const occupations = occupation.split(",");
+  const occupations = occupation.split(";");
   return (
     <>
       <tr className="hover">

@@ -8,7 +8,7 @@ type Props = {
 
 export const Categories: ComponentType<Props> = ({ person }) => {
   const category = person.categories.value;
-  const categories = category.split(",");
+  const categories = category.split(";");
   return (
     <>
       <tr className="hover">
