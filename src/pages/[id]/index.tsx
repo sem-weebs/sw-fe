@@ -4,6 +4,7 @@ import { PersonalImage } from "@/components/PersonalImage";
 import { useEffect, useState } from "react";
 import { InstagramStatistics } from "@/components/InstagramStatistics";
 import { Miscellaneous } from "@/components/Miscellaneous";
+import {API_URL} from "@/utils/constant";
 
 type Object = {
   value: string;
@@ -42,7 +43,7 @@ const Detail = () => {
     async function fetchData() {
       try {
         const response = await fetch(
-          `http://127.0.0.1:5000/details?username=${id}`,
+          `${API_URL}/details?username=${id}`,
         );
         if (!response.ok) {
           throw new Error("Something went wrong");
