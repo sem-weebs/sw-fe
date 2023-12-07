@@ -11,6 +11,10 @@ type SearchResults = {
     type: string;
     value: string;
   };
+  rank: {
+    type: string;
+    value: string;
+  };
   title?: {
     type: string;
     value: string;
@@ -179,31 +183,41 @@ const Index = () => {
             className="mb-4 rounded-md w-64"
           />
         ) : searchResults.length !== 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+          <div className="flex flex-wrap justify-center gap-4">
             {searchResults.map((result, index) => (
-              <div
-                key={index}
-                className="relative flex flex-col rounded-xl bg-white dark:bg-gray-800 text-gray-700 dark:text-white shadow-md"
-              >
-                <div className="relative mx-4 -mt-6 h-40 overflow-hidden rounded-xl bg-gray-800 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40 dark:bg-gradient-to-r dark:from-blue-500 dark:to-blue-600">
+              <div key={index} className="card w-96 bg-base-100 shadow-xl">
+                <figure className="w-full h-48 overflow-hidden">
                   <img
                     src={
                       result.image?.value ||
                       "https://animesher.com/orig/1/135/1355/13559/animesher.com_yui-hirasawa-gif-k-on-1355944.gif"
                     }
-                    alt=""
-                    className="object-cover w-full h-full rounded-md mb-4"
+                    alt="Description"
+                    className="w-full h-full object-cover"
                   />
-                </div>
-                <div className="p-6">
-                  <p className="block font-sans text-xl font-bold leading-snug tracking-normal text-white dark:text-blue-gray-900 antialiased">
-                    {result.username.value}
-                  </p>
-                  <p className="block font-sans text-base font-light leading-relaxed text-gray-700 dark:text-gray-300 antialiased">
+                </figure>
+                <div className="card-body">
+                  <div className="flex justify-between items-center">
+                    <h2 className="card-title truncate flex-grow flex-shrink max-w-xs">
+                      {result.username.value}
+                    </h2>
+                    <div className="badge badge-secondary ml-2 p-2 whitespace-nowrap">
+                      Rank #{result.rank.value}
+                    </div>
+                  </div>
+                  <p className="my-2 block font-sans text-base font-light leading-relaxed text-gray-700 dark:text-gray-300 antialiased">
                     {result.title?.value || "No Title"}
                   </p>
-                </div>
-                <div className="p-6 pt-0">
+                  <div className="card-actions justify-center mb-2">
+                    {result.categories.value
+                      .split(",")
+                      .map((category, index) => (
+                        <div key={index} className="badge badge-outline">
+                          {category}
+                        </div>
+                      ))}
+                  </div>
+
                   <Link
                     href={`/${result.username.value}`}
                     className="select-none rounded-lg bg-blue-500 dark:bg-blue-600 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
