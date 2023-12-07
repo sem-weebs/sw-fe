@@ -1,10 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
-import Link from "next/link";
 import { Search } from "@/components/Search";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { CelebrityCard } from "@/components/CelebrityCard";
-import {API_URL} from "@/utils/constant";
+import { API_URL } from "@/utils/constant";
 
 type SearchResults = {
   categories: {

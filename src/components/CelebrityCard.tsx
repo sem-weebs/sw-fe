@@ -25,15 +25,15 @@ type Props = {
 };
 
 export const CelebrityCard: ComponentType<Props> = ({ index, result }) => {
+  const imageSrc =
+    result.image?.value ||
+    "https://animesher.com/orig/1/135/1355/13559/animesher.com_yui-hirasawa-gif-k-on-1355944.gif";
   return (
     <>
       <div key={index} className="card w-96 bg-base-100 shadow-xl">
         <figure className="w-full h-48 overflow-hidden">
           <img
-            src={
-              result.image?.value ||
-              "https://animesher.com/orig/1/135/1355/13559/animesher.com_yui-hirasawa-gif-k-on-1355944.gif"
-            }
+            src={imageSrc}
             alt="Description"
             className="w-full h-full object-cover"
           />
