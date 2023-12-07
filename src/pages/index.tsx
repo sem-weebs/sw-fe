@@ -11,7 +11,7 @@ type SearchResults = {
     type: string;
     value: string;
   };
-  title: {
+  title?: {
     type: string;
     value: string;
   };
@@ -47,7 +47,6 @@ const Index = () => {
       .join(";");
 
     const apiUrl = `http://127.0.0.1:5000/search?categories=${categories}&q=${query}`;
-    console.log(apiUrl);
 
     setTimeout(() => {
       fetch(apiUrl)
@@ -201,7 +200,7 @@ const Index = () => {
                     {result.username.value}
                   </p>
                   <p className="block font-sans text-base font-light leading-relaxed text-gray-700 dark:text-gray-300 antialiased">
-                    {result.title.value}
+                    {result.title?.value || "No Title"}
                   </p>
                 </div>
                 <div className="p-6 pt-0">
