@@ -58,13 +58,15 @@ const Detail = () => {
 
   if (!person) {
     return (
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100vw',
-          height: '100vh'
-        }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100vw",
+          height: "100vh",
+        }}
+      >
         <span className="loading loading-dots loading-lg text-primary"></span>
       </div>
     );
@@ -77,13 +79,13 @@ const Detail = () => {
           <tr>
             <th colSpan={2} style={{ fontSize: "100%", textAlign: "center" }}>
               <div className="fn" style={{ fontSize: "125%" }}>
-                {person?.title?.value
-                  ? person.title.value
-                  : person?.birthName?.value}
+                {person?.nativeName?.value ||
+                  person?.birthName?.value ||
+                  person.title.value}
               </div>
             </th>
           </tr>
-          {person?.image?.value && <PersonalImage person={person} />}
+          <PersonalImage person={person} />
           <PersonalDetails person={person} />
           <InstagramStatistics person={person} />
           <Miscellaneous person={person} />
