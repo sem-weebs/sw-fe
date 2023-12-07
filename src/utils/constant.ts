@@ -1,4 +1,4 @@
-export const API_URL = "wiki-gram-sem-weebs.koyeb.app/";
+export const API_URL = "https://wiki-gram-sem-weebs.koyeb.app";
 
 export const categoryList = [
   "Accessories",
