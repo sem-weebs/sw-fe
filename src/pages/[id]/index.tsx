@@ -1,12 +1,13 @@
 import { useRouter } from "next/router";
 import { PersonalDetails } from "@/components/PersonalDetails";
 import { PersonalImage } from "@/components/PersonalImage";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InstagramStatistics } from "@/components/InstagramStatistics";
 import { Miscellaneous } from "@/components/Miscellaneous";
 import { API_URL } from "@/utils/constant";
 import { SearchResults } from "@/pages";
 import { YouMayAlsoLike } from "@/components/YouMayAlsoLike";
+import Link from "next/link";
 
 type Object = {
   value: string;
@@ -92,6 +93,11 @@ const Detail = () => {
 
   return (
     <div>
+      <Link
+          href={`/`}
+        >
+        <h1 className="text-4xl font-extrabold text-white pl-4 pt-4">Sem-Weebs</h1>
+      </Link>
       <div className="card px-96 py-4 bg-primary-content">
         <table className="table">
           <tbody>
