@@ -58,8 +58,14 @@ const Detail = () => {
 
   if (!person) {
     return (
-      <div>
-        <span className="loading loading-spinner text-primary"></span>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100vw',
+          height: '100vh'
+        }}>
+        <span className="loading loading-dots loading-lg text-primary"></span>
       </div>
     );
   }
@@ -71,8 +77,8 @@ const Detail = () => {
           <tr>
             <th colSpan={2} style={{ fontSize: "100%", textAlign: "center" }}>
               <div className="fn" style={{ fontSize: "125%" }}>
-                {person?.nativeName?.value
-                  ? person.nativeName.value
+                {person?.title?.value
+                  ? person.title.value
                   : person?.birthName?.value}
               </div>
             </th>
