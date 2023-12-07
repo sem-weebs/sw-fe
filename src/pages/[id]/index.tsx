@@ -6,8 +6,6 @@ import { InstagramStatistics } from "@/components/InstagramStatistics";
 import { Miscellaneous } from "@/components/Miscellaneous";
 import { API_URL } from "@/utils/constant";
 import { SearchResults } from "@/pages";
-import { CelebrityCard } from "@/components/CelebrityCard";
-import { SuggestionCard } from "@/components/SuggestionCard";
 import { YouMayAlsoLike } from "@/components/YouMayAlsoLike";
 
 type Object = {
