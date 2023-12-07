@@ -6,18 +6,19 @@ type Props = {
   person: Person;
 };
 
-export const Occupation: ComponentType<Props> = ({ person }) => {
-  const occupation = person.occupations.value;
-  const occupations = occupation.split(";");
+export const Citizenship: ComponentType<Props> = ({ person }) => {
+  const citizenship = person.citizenship.value;
+  const citizenshipList = citizenship.split(";");
+
   return (
     <>
       <tr className="hover">
-        <th scope="row">Occupation</th>
+        <th scope="row">Citizenship</th>
         <td>
           <div className="hlist">
             <ul>
-              {occupations.map((job) => (
-                <li key={job}>{toTitleCase(job)}</li>
+              {citizenshipList.map((cit) => (
+                <li key={cit}>{toTitleCase(cit)}</li>
               ))}
             </ul>
           </div>

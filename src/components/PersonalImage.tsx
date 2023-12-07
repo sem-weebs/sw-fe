@@ -8,8 +8,10 @@ type Props = {
 };
 
 export const PersonalImage: ComponentType<Props> = ({ person }) => {
-    const imageUrl = person?.image?.value || "https://i.imgur.com/OFbQiB7.jpg";
-    const imageCaption = person?.image?.value ? getImageCaption(person.image.value) : "Caption not available";
+  const imageUrl = person?.image?.value || "https://i.imgur.com/OFbQiB7.jpg";
+  const imageCaption = person?.image?.value
+    ? getImageCaption(person.image.value)
+    : "Caption not available";
   return (
     <>
       <tr>
@@ -22,16 +24,11 @@ export const PersonalImage: ComponentType<Props> = ({ person }) => {
               justifyContent: "center",
             }}
           >
-            <Image
-              alt={"Image"}
-              src={imageUrl}
-              width={220}
-              height={275}
-            />
+            <Image alt={"Image"} src={imageUrl} width={220} height={275} />
             <div
               style={{
                 lineHeight: "normal",
-                paddingTop: "0.2em",
+                paddingTop: "0.5em",
               }}
             >
               {imageCaption}

@@ -4,6 +4,9 @@ import { PersonalImage } from "@/components/PersonalImage";
 import { useEffect, useState } from "react";
 import { InstagramStatistics } from "@/components/InstagramStatistics";
 import { Miscellaneous } from "@/components/Miscellaneous";
+import { API_URL } from "@/utils/constant";
+import { SearchResults } from "@/pages";
+import { YouMayAlsoLike } from "@/components/YouMayAlsoLike";
 
 type Object = {
   value: string;
@@ -37,13 +40,12 @@ const Detail = () => {
   const [person, setPerson] = useState<Person | null>(null);
   const router = useRouter();
   const { id } = router.query;
+  const [suggestions, setSuggestions] = useState<SearchResults[]>([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(
-          `http://127.0.0.1:5000/details?username=${id}`,
-        );
+        const response = await fetch(`${API_URL}/details?username=${id}`);
         if (!response.ok) {
           throw new Error("Something went wrong");
         }
@@ -54,6 +56,22 @@ const Detail = () => {
       }
     }
     fetchData();
+  }, [id]);
+
+  useEffect(() => {
+    async function fetchSuggestions() {
+      try {
+        const response = await fetch(`${API_URL}/suggestions?username=${id}`);
+        if (!response.ok) {
+          throw new Error("Something went wrong");
+        }
+        const data = await response.json();
+        setSuggestions(data);
+      } catch (error) {
+        console.error("Error fetching suggestions", error);
+      }
+    }
+    fetchSuggestions();
   }, [id]);
 
   if (!person) {
@@ -73,24 +91,28 @@ const Detail = () => {
   }
 
   return (
-    <div className="card px-96 py-4 bg-primary-content">
-      <table className="table">
-        <tbody>
-          <tr>
-            <th colSpan={2} style={{ fontSize: "100%", textAlign: "center" }}>
-              <div className="fn" style={{ fontSize: "125%" }}>
-                {person?.nativeName?.value ||
-                  person?.birthName?.value ||
-                  person.title.value}
-              </div>
-            </th>
-          </tr>
-          <PersonalImage person={person} />
-          <PersonalDetails person={person} />
-          <InstagramStatistics person={person} />
-          <Miscellaneous person={person} />
-        </tbody>
-      </table>
+    <div>
+      <div className="card px-96 py-4 bg-primary-content">
+        <table className="table">
+          <tbody>
+            <tr>
+              <th colSpan={2} style={{ fontSize: "100%", textAlign: "center" }}>
+                <div className="fn" style={{ fontSize: "125%" }}>
+                  {person?.nativeName?.value ||
+                    person?.birthName?.value ||
+                    person.title.value}
+                </div>
+              </th>
+            </tr>
+            <PersonalImage person={person} />
+            <PersonalDetails person={person} />
+            <InstagramStatistics person={person} />
+            <Miscellaneous person={person} />
+          </tbody>
+        </table>
+      </div>
+
+      <YouMayAlsoLike suggestions={suggestions} />
     </div>
   );
 };
