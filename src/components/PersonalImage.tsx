@@ -28,7 +28,7 @@ export const PersonalImage: ComponentType<Props> = ({ person }) => {
             <div
               style={{
                 lineHeight: "normal",
-                paddingTop: "0.2em",
+                paddingTop: "0.5em",
               }}
             >
               {imageCaption}

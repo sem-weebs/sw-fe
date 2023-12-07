@@ -29,8 +29,7 @@ export const Born: ComponentType<Props> = ({ person }) => {
           {birthDateString && birthDateString}
           {age && <span> (age {age})</span>}
           {birthDateString || age ? <br /> : null}
-          {person?.birthPlace?.value && person.birthPlace.value},{" "}
-          {person?.citizenship?.value && person.citizenship.value}
+          {person?.birthPlace?.value && person.birthPlace.value}
         </td>
       </tr>
     </>
